@@ -96,35 +96,35 @@ footer img{height:70px}
 <script>
 /* ============ EDITE SÓ AQUI A CADA SEMANA ============ */
 const CONFIG = {
-  segundaFeira: "2026-10-12",          // data (AAAA-MM-DD) da segunda-feira da semana
+  segundaFeira: "2026-10-19",          // data (AAAA-MM-DD) da segunda-feira da semana
   whatsMed: "551139222321",            // WhatsApp (todos os botões)
   whatsOdo: "551139222321",            // WhatsApp odontologia (mesmo número)
   feriadoNome: "Nossa Senhora Aparecida",  // nome do feriado (opcional)
-  feriados: [0],                      // dias de feriado (0=Seg ... 5=Sáb); use [] se não houver
+  feriados: [],                      // dias de feriado (0=Seg ... 5=Sáb); use [] se não houver
 };
 
 // Cada atendimento: "especialidade(s)|profissional|horário". Várias especialidades: junte com +
 // Dias: 0=Seg 1=Ter 2=Qua 3=Qui 4=Sex 5=Sáb  (feriados: veja CONFIG.feriados)
 const AGENDA = {
   medicina: [
-    [],
-    ["pediatria|Sérgio|14h às 16h20","gastro|Camila|12h às 15h","psicologia|Meirielle|09h às 17h","clinica|Júlia|07h às 11h30","oftalmo|Ana Azussa|09h às 15h","cardiologia|Adauto|08h às 14h"],
-    ["endocrino|Vera|13h30 às 16h30","clinica|Júlia|07h às 11h30","ortopedia|Nicolas|07h às 12h","psicologia|Joelma|13h às 17h","ginecologia|Mirella|14h às 17h","dermatologia|João|07h às 12h","otorrino|Janaina|08h40 às 11h40","geriatria|Isabella|15h às 17h"],
-    ["nutri|Fernanda|13h às 16h","oftalmo|Bernardo|08h às 12h","neuro|Gabriel|09h às 16h","equipeneuro||09h às 16h","cardiologia|Adauto|08h às 14h"],
-    ["pediatria|Sérgio|14h às 16h20","eco|Marcelo|08h às 11h","psicologia|Meirielle|10h às 16h","clinica|Gabi|09h às 14h","psicologia|Viviane|09h30 às 14h30","neuropsico|Viviane|14h30 às 16h","otorrino|Janaina|14h às 17h30","endocrino|Tatiane|12h30 às 15h45"],
-    ["gastro|Camila|08h às 11h","endocrino|Tatiane|07h às 12h","clinica|Júlia|07h às 11h30","uro|Carlos|07h30 às 09h30"]
+    ["psicologia|Meirielle|12h às 17h30","endocrino|Tatiane|07h às 12h","clinica|Gabi|09h às 17h","dermatologia|Juliano|14h às 17h","psiquiatria|Charles|07h às 17h","psicologia|Viviane|09h às 14h30","neuropsico|Viviane|14h30 às 16h"],
+    ["gastro|Camila|12h às 15h","psicologia|Meirielle|09h às 17h","clinica|Júlia|07h às 11h30","oftalmo|Ana Azussa|09h às 15h"],
+    ["clinica|Júlia|07h às 11h30","psicologia|Joelma|13h às 17h","ginecologia|Mirella|14h às 17h","otorrino|Janaina|08h40 às 11h40","geriatria|Isabella|07h às 12h"],
+    ["nutri|Fernanda|13h às 16h","oftalmo|Bernardo|08h às 12h","cardiologia|Adauto|08h às 14h"],
+    ["psicologia|Meirielle|10h às 16h","clinica|Gabi|09h às 17h","psicologia|Viviane|09h30 às 14h30","neuropsico|Viviane|14h30 às 16h","otorrino|Janaina|14h às 17h30","endocrino|Tatiane|12h30 às 15h45","ginecologia|Mirella|09h30 às 12h30"],
+    ["clinica|Júlia|07h às 11h30","eco|Marcelo|08h às 10h","nutri|Fernanda|07h às 11h"]
   ],
   odontologia: [
-    [],
-    ["odontopediatria+ortodontia|Dr Bruno|08h às 17h30","clinicogeral+proteses|Dr Gabriel|08h30 às 17h","estetica+clinicogeral|Dr Matheus|08h30 às 17h","endodontia+clinicogeral+proteses|Dra Veronica|09h às 17h"],
+    ["odontopediatria+ortodontia|Dr Bruno|08h às 17h30","clinicogeral+proteses|Dr Gabriel|08h30 às 17h","clinicogeral|Dra Marília|09h às 17h"],
+    ["odontopediatria+ortodontia|Dr Bruno|08h às 17h30","clinicogeral+proteses|Dr Gabriel|08h30 às 17h","estetica+clinicogeral|Dr Matheus|08h30 às 17h"],
     ["clinicogeral|Dra Marília|09h às 17h"],
-    ["periodontia+implantodontia+proteses+clinicogeral|Dra Juliana|09h às 17h","clinicogeral+proteses|Dr Gabriel|08h30 às 16h30","estetica+clinicogeral|Dr Matheus|08h30 às 17h"],
+    ["ortodontia|Dra Priscila|09h às 17h","periodontia+implantodontia+proteses+clinicogeral|Dra Juliana|09h às 17h","clinicogeral+proteses|Dr Gabriel|08h30 às 16h30","estetica+clinicogeral|Dr Matheus|08h30 às 17h","endodontia+clinicogeral+proteses|Dra Veronica|09h às 17h"],
     ["proteses+clinicogeral|Dr José Neto|08h15 às 17h","implantodontia+proteses|Dr Danilo|08h30 às 17h"],
     ["clinicogeral+proteses|Dr Gabriel|08h15 às 12h","clinicogeral|Dra Marília|08h às 12h"]
   ],
   exames: [
-    [],
     ["papanicolau||","mapa+holter||"],
+    ["usg|Marcela|07h às 12h","papanicolau||","mapa+holter||"],
     ["mapa+holter||"],
     ["usg|Marcela|07h às 12h","papanicolau||","mapa+holter||"],
     ["papanicolau||","mapa+holter||"],
@@ -136,6 +136,7 @@ const ESPEC = {
   pediatria:["Pediatria","Cuida de bebês, crianças e adolescentes: crescimento, vacinas, alimentação e doenças da infância."],
   gastro:["Gastroenterologia","Cuida do estômago, intestino, fígado e digestão: azia, refluxo, gastrite, prisão de ventre e dor abdominal."],
   psicologia:["Psicologia","Cuidado com a saúde mental. Uma sessão para conversar, entender o que você sente e encontrar caminhos para viver com mais equilíbrio."],
+  psiquiatria:["Psiquiatria","Cuida da saúde mental com avaliação médica, diagnóstico e tratamento de ansiedade, depressão, problemas de sono e outros transtornos."],
   clinica:["Clínica médica","Seu primeiro passo no cuidado. Avalia sintomas, acompanha sua saúde e encaminha para especialistas quando precisa."],
   oftalmo:["Oftalmologia","Cuida da saúde dos olhos: exame de vista, óculos, catarata, glaucoma e prevenção de problemas na visão."],
   cardiologia:["Cardiologia","Cuida do coração e da circulação: pressão alta, colesterol, palpitações e prevenção de doenças cardíacas."],
